@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rescue_time/components/button.dart';
 import 'package:rescue_time/components/text_widget.dart';
 import 'package:rescue_time/constants/colors.dart';
 import 'package:rescue_time/constants/nav.dart';
@@ -15,7 +16,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool isPasswordVisible = false; // تعريف isPasswordVisible هنا
+  bool isPasswordVisible = false; 
 
   @override
   Widget build(BuildContext context) {
@@ -97,24 +98,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   height: 50,
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.login,
-                      color: white,
-                    ),
-                    label: const TextWidget(
-                      text: "Login",
-                      color: white,
-                      size: 18,
-                      isBold: true,
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: primary,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                  child: 
+                  ButtonWidget(
+                    text: 'Login',
+                    isBorderSide: false,
+                    isPrimaryColor: true,
+                    onPress: () {
+                      // context.pushNav(screen: const LoginScreen());
+                    },
+                    color: white,
                   ),
                 ),
                 trVSpace8,

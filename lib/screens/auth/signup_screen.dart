@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rescue_time/components/button.dart';
 import 'package:rescue_time/components/text_widget.dart';
 import 'package:rescue_time/constants/colors.dart';
 import 'package:rescue_time/constants/spaces.dart';
@@ -12,7 +13,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   bool isPasswordVisible = false;
-  bool isConfirmPasswordVisible = false; // تعريف حالة لكلمة المرور للتأكد
+  bool isConfirmPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +24,13 @@ class _SignupScreenState extends State<SignupScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextWidget(
+            const  TextWidget(
                 text: 'Create your account',
                 size: 30,
                 isBold: true,
                 color: primary,
               ),
               trVSpace64,
-              // Enter Name
               TextField(
                 decoration: InputDecoration(
                   hintText: 'Enter Name',
@@ -156,20 +156,14 @@ class _SignupScreenState extends State<SignupScreen> {
               SizedBox(
                 width: double.infinity,
                 height: 50,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: TextWidget(
-                    text: "Sign Up",
-                    color: white,
-                    size: 18,
-                    isBold: true,
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
+                child: ButtonWidget(
+                  text: 'Sign Up',
+                  isBorderSide: false,
+                  isPrimaryColor: true,
+                  onPress: () {
+                    // context.pushNav(screen: const LoginScreen());
+                  },
+                  color: white,
                 ),
               ),
             ],

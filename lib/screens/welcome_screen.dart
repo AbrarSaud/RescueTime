@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rescue_time/components/text_widget.dart';
+import 'package:rescue_time/components/button.dart';
 import 'package:rescue_time/constants/colors.dart';
 import 'package:rescue_time/constants/nav.dart';
 import 'package:rescue_time/constants/spaces.dart';
 import 'package:rescue_time/screens/auth/login_screen.dart';
+import 'package:rescue_time/screens/emergency_check_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({
@@ -26,42 +27,28 @@ class WelcomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 height: 50,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: const TextWidget(
-                    text: "Emergency check",
-                    color: white,
-                    size: 18,
-                    isBold: true,
-                  ),
+                child: ButtonWidget(
+                  text: 'Emergency check',
+                  isBorderSide: false,
+                  isPrimaryColor: true,
+                  onPress: () {
+                    context.pushNav(screen: const EmergencyCheckScreen());
+                  },
+                  color: white,
                 ),
               ),
               trVSpace16,
               SizedBox(
                 width: double.infinity,
                 height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
+                child: ButtonWidget(
+                  text: 'Login / Sign up',
+                  isBorderSide: true,
+                  isPrimaryColor: false,
+                  onPress: () {
                     context.pushNav(screen: const LoginScreen());
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: const BorderSide(width: 2, color: primary),
-                    ),
-                  ),
-                  child: const TextWidget(
-                    text: "Login / Signup",
-                    color: primary,
-                    size: 18,
-                  ),
+                  color: primary,
                 ),
               ),
             ],

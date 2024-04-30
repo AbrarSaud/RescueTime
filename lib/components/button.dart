@@ -1,52 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:rescue_time/components/text_widget.dart';
+import 'package:rescue_time/constants/colors.dart';
 
-class Button extends StatelessWidget {
-  const Button({
+class ButtonWidget extends StatelessWidget {
+  const ButtonWidget({
     super.key,
     required this.text,
     this.onPress,
-    this.textSize = 20,
-    this.borderRadius = 15,
-    this.isBold = false,
-    this.color = Colors.black,
-    required this.backgroundColor,
-    this.btnHigth,
-    this.btnWidth,
-    this.fontFamily,
+    required this.isBorderSide,
+    required this.isPrimaryColor,
+    required this.color,
   });
+
   final String text;
-  final bool isBold;
-  final double textSize;
-  final double borderRadius;
   final Function()? onPress;
+  final bool isBorderSide;
   final Color color;
-  final Color backgroundColor;
-  final double? btnHigth;
-  final double? btnWidth;
-  final String? fontFamily;
+
+  final bool isPrimaryColor;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPress,
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor,
-        fixedSize: Size(btnWidth ?? 100, btnHigth ?? 50),
+        backgroundColor: isPrimaryColor ? primary : white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: BorderRadius.circular(10),
+          side: isBorderSide
+              ? BorderSide(width: 2, color: primary)
+              : BorderSide.none,
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TextWidget(
-          fontFamily: fontFamily,
-          text: text,
-          textAlign: TextAlign.center,
-          size: textSize,
-          isBold: isBold,
-          color: color,
-        ),
+      child: TextWidget(
+        text: text,
+        color: color,
+        size: 18,
       ),
     );
   }
