@@ -6,7 +6,7 @@ class TextWidget extends StatelessWidget {
       required this.text,
       this.size = 14,
       this.isBold = false,
-      this.color = Colors.black, //TODO : have to change it
+      this.color = Colors.black,
       this.lineThrough = false,
       this.overflow,
       this.textAlign,

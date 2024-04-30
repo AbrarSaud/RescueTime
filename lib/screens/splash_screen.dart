@@ -1,13 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:rescue_time/main.dart';
+import 'package:rescue_time/screens/welcome_screen.dart';
 
-class SplashPage extends StatelessWidget {
-  const SplashPage({
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +22,7 @@ class SplashPage extends StatelessWidget {
               ),
             ],
           )),
-      nextScreen: const  MyHomePage(title: 'Flutter Demo Home Page'),
+      nextScreen: const WelcomeScreen(),
       splashTransition: SplashTransition.scaleTransition,
       splashIconSize: 500,
     )));
