@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rescue_time/screens/emergency_check_screen.dart';
 
 extension NavigatorExten on BuildContext {
   pushNav({required Widget screen}) {
@@ -7,7 +8,7 @@ extension NavigatorExten on BuildContext {
   }
 
 
-  popNav() {
+  popNav({required EmergencyCheckScreen screen}) {
     return Navigator.of(this).pop();
   }
 

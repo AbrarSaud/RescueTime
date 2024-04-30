@@ -1,10 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rescue_time/components/button.dart';
 import 'package:rescue_time/constants/colors.dart';
 import 'package:rescue_time/constants/nav.dart';
+import 'package:rescue_time/constants/show_dialog_widget.dart';
 import 'package:rescue_time/constants/spaces.dart';
 import 'package:rescue_time/screens/auth/login_screen.dart';
-import 'package:rescue_time/screens/emergency_check_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({
@@ -32,7 +33,11 @@ class WelcomeScreen extends StatelessWidget {
                   isBorderSide: false,
                   isPrimaryColor: true,
                   onPress: () {
-                    context.pushNav(screen: const EmergencyCheckScreen());
+                    showCupertinoModalPopup(
+                        context: context,
+                        builder: (context) {
+                          return const ShowDialogWidget();
+                        });
                   },
                   color: white,
                 ),
