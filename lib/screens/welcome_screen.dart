@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rescue_time/components/button.dart';
+import 'package:rescue_time/components/button_widget.dart';
 import 'package:rescue_time/constants/colors.dart';
 import 'package:rescue_time/constants/nav.dart';
 import 'package:rescue_time/constants/show_dialog_widget.dart';
@@ -37,7 +37,7 @@ class WelcomeScreen extends StatelessWidget {
                         context: context,
                         builder: (context) {
                           return const ShowDialogWidget();
-                        });
+                        },);
                   },
                   color: white,
                 ),

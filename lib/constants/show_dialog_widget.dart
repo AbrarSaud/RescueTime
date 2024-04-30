@@ -9,18 +9,19 @@ class ShowDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoActionSheet(
-      title:
-       const Text("Emergency Aid" ,style: TextStyle(fontSize: 17.5),),
-      message: const Text("Do you already know what the patient is suffering from?",style: TextStyle(fontSize: 15)),
+      title: const Text(
+        "Emergency Aid",
+        style: TextStyle(fontSize: 17.5),
+      ),
+      message: const Text(
+          "Do you already know what the patient is suffering from?",
+          style: TextStyle(fontSize: 15)),
       actions: [
         CupertinoActionSheetAction(
           onPressed: () {
             context.pushNav(screen: const SelectEmergencyScreen());
           },
-          child: 
-          const Text("Yes")
-          
-          ,
+          child: const Text("Yes"),
         ),
         CupertinoActionSheetAction(
           onPressed: () {

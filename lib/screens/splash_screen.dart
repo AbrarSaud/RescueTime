@@ -9,22 +9,25 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-            child: AnimatedSplashScreen(
-      duration: 500,
-      splash: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 40),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/images/logo.png',
-              ),
-            ],
-          )),
-      nextScreen: const WelcomeScreen(),
-      splashTransition: SplashTransition.scaleTransition,
-      splashIconSize: 500,
-    )));
+      body: Center(
+        child: AnimatedSplashScreen(
+          duration: 500,
+          splash: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 40),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/logo.png',
+                ),
+              ],
+            ),
+          ),
+          nextScreen: const WelcomeScreen(),
+          splashTransition: SplashTransition.scaleTransition,
+          splashIconSize: 500,
+        ),
+      ),
+    );
   }
 }

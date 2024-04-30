@@ -13,35 +13,37 @@ class EmergencyCheckScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBarWidget(),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const TextWidget(
-                text: 'Are you in emergency?',
-                size: 30,
-                isBold: true,
-                color: primary,
-              ),
-              trVSpace24,
-              const TextWidget(
-                textAlign: TextAlign.center,
-                text: 'Press the Help button, and we\'ll ensure \nyou get the assistance you need ..',
-                size: 20,
-                isBold: false,
-                color: black,
-              ),
-              trVSpace32,
-              InkWell(
-                onTap: () {
-                  context.pushNav(screen: const SoonScreen());
-                },
-                child: Lottie.asset("assets/animations/sos.json",
-                    repeat: true, reverse: true, width: 250, height: 250),
-              )
-            ],
-          ),
-        ));
+      appBar: AppBarWidget(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const TextWidget(
+              text: 'Are you in emergency?',
+              size: 30,
+              isBold: true,
+              color: primary,
+            ),
+            trVSpace24,
+            const TextWidget(
+              textAlign: TextAlign.center,
+              text:
+                  'Press the Help button, and we\'ll ensure \nyou get the assistance you need ..',
+              size: 20,
+              isBold: false,
+              color: black,
+            ),
+            trVSpace32,
+            InkWell(
+              onTap: () {
+                context.pushNav(screen: const SoonScreen());
+              },
+              child: Lottie.asset("assets/animations/sos.json",
+                  repeat: true, reverse: true, width: 250, height: 250),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
