@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:rescue_time/constants/colors.dart';
+import 'package:rescue_time/data/emergency_data.dart';
+import 'package:rescue_time/model/emergency_data_model.dart';
 import 'package:rescue_time/screens/splash_screen.dart';
 
+List<Emergencies> listEmergencies = [];
+
 void main() {
+    for (var element in emergencyData["mergencys"]) {
+    listEmergencies.add(Emergencies.fromJson(element));
+  }
   runApp(const MyApp());
 }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:rescue_time/constants/nav.dart';
 import 'package:rescue_time/screens/emergency_check_screen.dart';
-import 'package:rescue_time/screens/select_emergency_screen.dart';
+import 'package:rescue_time/screens/emergency_screen.dart';
 
 class ShowDialogWidget extends StatelessWidget {
   const ShowDialogWidget({super.key});
@@ -19,7 +19,7 @@ class ShowDialogWidget extends StatelessWidget {
       actions: [
         CupertinoActionSheetAction(
           onPressed: () {
-            context.pushNav(screen: const SelectEmergencyScreen());
+            context.pushNav(screen: const EmergencyScreen());
           },
           child: const Text("Yes"),
         ),

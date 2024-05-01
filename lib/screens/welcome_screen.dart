@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rescue_time/components/button_widget.dart';
 import 'package:rescue_time/constants/colors.dart';
 import 'package:rescue_time/constants/nav.dart';
-import 'package:rescue_time/constants/show_dialog_widget.dart';
+import 'package:rescue_time/components/show_dialog_widget.dart';
 import 'package:rescue_time/constants/spaces.dart';
 import 'package:rescue_time/screens/auth/login_screen.dart';
 

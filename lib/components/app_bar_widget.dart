@@ -21,7 +21,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   Widget build(BuildContext context) {
     return AppBar(
-      title: TextWidget(text: text, color: primary, isBold: true),
+      title: TextWidget(text: text, size: 19, color: primary, isBold: true),
       elevation: 0,
       iconTheme: IconThemeData(color: colorIconTheme),
       leading: const BackButton(
