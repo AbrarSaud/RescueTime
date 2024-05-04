@@ -17,7 +17,7 @@ class EmergencysDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(text: emergencyName),
+      appBar: AppBarWidget(text: emergencyName, isBackButton: true,),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 25,left: 25,right: 25),

@@ -13,7 +13,7 @@ class EmergencyCheckScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget(isBackButton: true,),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

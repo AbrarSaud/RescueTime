@@ -6,6 +6,7 @@ import 'package:rescue_time/constants/colors.dart';
 import 'package:rescue_time/constants/nav.dart';
 import 'package:rescue_time/constants/spaces.dart';
 import 'package:rescue_time/screens/auth/signup_screen.dart';
+import 'package:rescue_time/screens/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({
@@ -53,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                     isBorderSide: false,
                     isPrimaryColor: true,
                     onPress: () {
-                      // context.pushNav(screen: const LoginScreen());
+                      context.pushNav(screen: const HomeScreen());
                     },
                     color: white,
                   ),

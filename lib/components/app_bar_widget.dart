@@ -8,8 +8,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       this.icon,
       this.colorIconTheme = black,
       this.onPressed,
-      this.backgroundColor = white,
-      this.text = ''});
+      this.text = '', required this.isBackButton});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -17,27 +16,37 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final IconData? icon;
   final Color? colorIconTheme;
   final Function()? onPressed;
-  final Color? backgroundColor;
-
+  final bool isBackButton;
   Widget build(BuildContext context) {
     return AppBar(
       title: TextWidget(text: text, size: 19, color: primary, isBold: true),
       elevation: 0,
       iconTheme: IconThemeData(color: colorIconTheme),
-      leading: const BackButton(
+      leading:  isBackButton ?
+      
+       BackButton(
         color: primary,
-      ),
+  
+      ) :
+      Padding(padding: const EdgeInsets.only(left: 24),
+      child: IconButton( onPressed: () {  }, icon: Icon(Icons.menu ,color: Colors.grey[800],size: 36,),),)
+      
+      ,
       centerTitle: true,
       actions: [
-        IconButton(
-          onPressed: onPressed,
-          icon: Icon(
-            icon,
-            color: primary,
+        Padding(
+        padding: const EdgeInsets.only(right: 24),
+          child: IconButton(
+            onPressed: onPressed,
+            icon: Icon(
+              icon,
+              size: 36,
+              color: Colors.grey[800],
+            ),
           ),
         ),
       ],
-      backgroundColor: backgroundColor,
+      backgroundColor: transparent,
     );
   }
 }

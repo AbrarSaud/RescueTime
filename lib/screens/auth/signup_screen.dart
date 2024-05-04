@@ -3,7 +3,9 @@ import 'package:rescue_time/components/button_widget.dart';
 import 'package:rescue_time/components/text_field_widget.dart';
 import 'package:rescue_time/components/text_widget.dart';
 import 'package:rescue_time/constants/colors.dart';
+import 'package:rescue_time/constants/nav.dart';
 import 'package:rescue_time/constants/spaces.dart';
+import 'package:rescue_time/screens/home_screen.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -66,7 +68,9 @@ class SignupScreen extends StatelessWidget {
                     text: 'Sign Up',
                     isBorderSide: false,
                     isPrimaryColor: true,
-                    onPress: () {},
+                    onPress: () {
+                      context.pushNav(screen: const HomeScreen());
+                    },
                     color: white,
                   ),
                 ),

@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   MaterialApp(
       theme: ThemeData(
         scaffoldBackgroundColor: white, 
+        primarySwatch:  Colors.red,
       ),
         debugShowCheckedModeBanner: false,
       title: 'Rescue Time',
