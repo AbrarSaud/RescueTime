@@ -24,7 +24,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       iconTheme: IconThemeData(color: colorIconTheme),
       leading:  isBackButton ?
       
-       BackButton(
+       const BackButton(
         color: primary,
   
       ) :
@@ -40,7 +40,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             onPressed: onPressed,
             icon: Icon(
               icon,
-              size: 36,
+              size: 30,
               color: Colors.grey[800],
             ),
           ),

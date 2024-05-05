@@ -28,7 +28,8 @@ class WelcomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 height: 50,
-                child: ButtonWidget(
+                child: 
+                ButtonWidget(
                   text: 'Emergency check',
                   isBorderSide: false,
                   isPrimaryColor: true,

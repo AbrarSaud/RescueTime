@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:rescue_time/components/app_bar_widget.dart';
 import 'package:rescue_time/components/content_tab.dart';
 import 'package:rescue_time/components/text_widget.dart';
+import 'package:rescue_time/constants/nav.dart';
 import 'package:rescue_time/constants/spaces.dart';
+import 'package:rescue_time/screens/profile_screen.dart';
 import 'package:rescue_time/tab/about_tab.dart';
 import 'package:rescue_time/tab/reading_tab.dart';
 import 'package:rescue_time/tab/video_tab.dart';
@@ -36,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
       length: contentTabs.length,
       child: Scaffold(
         appBar: AppBarWidget(
-          isBackButton: false,
-          icon: Icons.person,
-        ),
+            isBackButton: false,
+            icon: Icons.person,
+            onPressed: () => context.pushNav(screen: const ProfileScreen())),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 36.0, vertical: 18),
@@ -73,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   text: "  About TimeRescue",
                   size: 20,
                 ),
-                    trVSpace8,
+                trVSpace8,
                 TabBar(tabs: contentTabs),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.25,

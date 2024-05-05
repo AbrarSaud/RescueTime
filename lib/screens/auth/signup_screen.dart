@@ -69,10 +69,21 @@ class SignupScreen extends StatelessWidget {
                     isBorderSide: false,
                     isPrimaryColor: true,
                     onPress: () {
-                      context.pushNav(screen: const HomeScreen());
+                      // context.pushNav(screen: const HomeScreen());
                     },
                     color: white,
                   ),
+
+                  
+                ),
+                  ButtonWidget(
+                  text: 'Emergency check',
+                  isBorderSide: false,
+                  isPrimaryColor: true,
+                  onPress: () {
+                
+                  },
+                  color: primary,
                 ),
               ],
             ),
