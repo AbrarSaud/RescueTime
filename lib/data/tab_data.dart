@@ -1,16 +1,61 @@
-Map tabsData = {
+import 'package:flutter/material.dart';
+import 'package:rescue_time/components/content_tab.dart';
 
-  "tab": [
-      {
-      "id": 1,
-      "tabName": "Epilepsy",
-      "title":['Importance of First Aid'],
-      "description":
-["First aid is essential for providing immediate care to injured or ill individuals before professional medical help arrives. It:\n\n\nEnables immediate response to emergencies, potentially saving lives.\nPrevents complications and further injuries.\nPromotes faster recovery.\nReduces pain and suffering.\nPreserves life through critical interventions like CPR.\nEmpowers individuals to take action during emergencies, making them valuable assets in their communities."],
-      "emergencyImag": "assets/images/epilepsy.png",
-      "descriptionImag": "assets/images/img_1.jpg",
-    
-    },
-  ]
+List<Widget> contentTabs = [
+  const ContentTabsWidget(
+    iconPath: 'assets/images/tab_about.png',
+  ),
+  const ContentTabsWidget(
+    iconPath: 'assets/images/tab_reading.png',
+  ),
+  const ContentTabsWidget(
+    iconPath: 'assets/images/tab_video.png',
+  ),
+];
 
-};
+List<Widget> aboutTimeRescueTabs = [
+  const ContentTabsWidget(
+    iconPath: 'assets/images/tab_about.png',
+  ),
+  const ContentTabsWidget(
+    iconPath: 'assets/images/tab_reading.png',
+  ),
+  const ContentTabsWidget(
+    iconPath: 'assets/images/secure-shield.png',
+  ),
+];
+
+List infoContentTab = [
+  [
+    "The Importance of First Aid",
+  ],
+  ["Types of First Aid"]
+];
+List readingContentTab = [
+  [
+    "Role of a First Aider",
+  ],
+];
+List vdeoContentTab = [
+  [
+    "Watch: First Aid for Choking Child",
+  ],
+];
+List aboutTimeRescueTab = [
+  [
+    "About Us: TimeRescue Innovators",
+  ],
+  [
+    "TimeRescue is Solutions for \nEmergency Challenges",
+  ],
+];
+
+List readingTimeRescueTab = [
+  ["Who can use TimeRescue:"],
+];
+
+List securityTimeRescueTab = [
+  [
+    "About privacy and security",
+  ],
+];
