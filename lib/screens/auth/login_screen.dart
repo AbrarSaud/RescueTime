@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rescue_time/components/button_widget.dart';
 import 'package:rescue_time/components/text_field_widget.dart';
@@ -6,12 +7,45 @@ import 'package:rescue_time/constants/colors.dart';
 import 'package:rescue_time/constants/nav.dart';
 import 'package:rescue_time/constants/spaces.dart';
 import 'package:rescue_time/screens/auth/signup_screen.dart';
-import 'package:rescue_time/screens/home_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({
     super.key,
   });
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController _emailLoginTextController = TextEditingController();
+  TextEditingController _passwordLoginTextController = TextEditingController();
+
+
+void loginMethod() async {
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailLoginTextController.text,
+      password: _passwordLoginTextController.text,
+    );
+    print('Login successful');
+  }on FirebaseAuthException  catch (e) {
+    print('Login failed: $e');
+    displayMessage(e.code);
+  }
+}
+
+
+void displayMessage( String message) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text(message),
+      );
+    },
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -29,17 +63,19 @@ class LoginScreen extends StatelessWidget {
                   'assets/images/login.png',
                 ),
                 trVSpace8,
-                const TextFieldWidget(
+                TextFieldWidget(
+                  controller: _emailLoginTextController,
                   hintText: 'Enter Email',
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.email,
                     color: primary,
                   ),
                   label: 'Email',
                 ),
-                const TextFieldWidget(
+                TextFieldWidget(
+                  controller: _passwordLoginTextController,
                   hintText: 'Enter Password',
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.lock,
                     color: primary,
                   ),
@@ -54,7 +90,9 @@ class LoginScreen extends StatelessWidget {
                     isBorderSide: false,
                     isPrimaryColor: true,
                     onPress: () {
-                      context.pushNav(screen: const HomeScreen());
+                      loginMethod(
+                      
+                      );
                     },
                     color: white,
                   ),

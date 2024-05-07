@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:rescue_time/screens/welcome_screen.dart';
+import 'package:rescue_time/screens/auth/auth_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({
@@ -23,7 +23,7 @@ class SplashScreen extends StatelessWidget {
               ],
             ),
           ),
-          nextScreen: const WelcomeScreen(),
+          nextScreen: const AuthScreen(),
           splashTransition: SplashTransition.scaleTransition,
           splashIconSize: 500,
         ),

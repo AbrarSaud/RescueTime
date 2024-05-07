@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1042600435546",
+    "project_id": "rescuetimeapp-8564b",
+    "storage_bucket": "rescuetimeapp-8564b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042600435546:android:e936b9771ddd43cb4e5d63",
+        "android_client_info": {
+          "package_name": "com.example.rescue_time"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGQyM_h_zZcyDT6r87SlYTqwkjSG-CO8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

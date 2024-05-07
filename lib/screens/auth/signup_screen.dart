@@ -1,14 +1,29 @@
+import 'dart:io';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rescue_time/components/button_widget.dart';
 import 'package:rescue_time/components/text_field_widget.dart';
 import 'package:rescue_time/components/text_widget.dart';
 import 'package:rescue_time/constants/colors.dart';
-import 'package:rescue_time/constants/nav.dart';
 import 'package:rescue_time/constants/spaces.dart';
-import 'package:rescue_time/screens/home_screen.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
+  TextEditingController _heightController = TextEditingController();
+  TextEditingController _weightController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +35,16 @@ class SignupScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                trVSpace128,
+                trVSpace64,
                 const TextWidget(
                   text: 'Create your account',
                   size: 30,
                   isBold: true,
                   color: primary,
                 ),
-                trVSpace64,
-                const TextFieldWidget(
+                trVSpace24,
+                TextFieldWidget(
+                  controller: _nameController,
                   hintText: 'Enter Name',
                   icon: Icon(
                     Icons.person,
@@ -36,7 +52,8 @@ class SignupScreen extends StatelessWidget {
                   ),
                   label: 'Name',
                 ),
-                const TextFieldWidget(
+                TextFieldWidget(
+                  controller: _emailController,
                   hintText: 'Enter Email',
                   icon: Icon(
                     Icons.email,
@@ -44,7 +61,8 @@ class SignupScreen extends StatelessWidget {
                   ),
                   label: 'Email',
                 ),
-                const TextFieldWidget(
+                TextFieldWidget(
+                  controller: _passwordController,
                   hintText: 'Enter Password',
                   icon: Icon(
                     Icons.lock,
@@ -52,7 +70,8 @@ class SignupScreen extends StatelessWidget {
                   ),
                   label: 'Password',
                 ),
-                const TextFieldWidget(
+                TextFieldWidget(
+                  controller: _confirmPasswordController,
                   hintText: 'Confirm Password',
                   icon: Icon(
                     Icons.lock,
@@ -60,7 +79,24 @@ class SignupScreen extends StatelessWidget {
                   ),
                   label: 'Password',
                 ),
-                trVSpace16,
+                TextFieldWidget(
+                  controller: _heightController,
+                  hintText: 'Enter Height (cm)',
+                  icon: Icon(
+                    Icons.height,
+                    color: primary,
+                  ),
+                  label: 'Height (cm)',
+                ),
+                TextFieldWidget(
+                  controller: _weightController,
+                  hintText: 'Enter Weight (kg)',
+                  icon: Icon(
+                    Icons.line_weight,
+                    color: primary,
+                  ),
+                  label: 'Weight (kg)',
+                ),
                 SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -69,26 +105,75 @@ class SignupScreen extends StatelessWidget {
                     isBorderSide: false,
                     isPrimaryColor: true,
                     onPress: () {
-                      // context.pushNav(screen: const HomeScreen());
+                      signUpWithEmailAndPassword();
                     },
                     color: white,
                   ),
-
-                  
-                ),
-                  ButtonWidget(
-                  text: 'Emergency check',
-                  isBorderSide: false,
-                  isPrimaryColor: true,
-                  onPress: () {
-                
-                  },
-                  color: primary,
                 ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  void signUpWithEmailAndPassword() async {
+    void displayMessage(String message) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(message),
+          );
+        },
+      );
+    }
+
+    String name = _nameController.text.toString();
+    String email = _emailController.text.toString();
+    String password = _passwordController.text.toString();
+    String confirmPassword = _confirmPasswordController.text.toString();
+    String height = _heightController.text.toString();
+    String weight = _weightController.text.toString();
+    if (password != confirmPassword) {
+      // Navigator.pop(context);
+      displayMessage("Passwords do not match!");
+      return;
+    }
+
+    try {
+      await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      storeAdditionalUserData(name, height, weight);
+    } on FirebaseAuthException catch (e) {
+      print('Signup failed: $e');
+
+      // Navigator.pop(context);
+      displayMessage("Signup failed: ${e.code}");
+      return;
+    }
+  }
+
+  // Function to store additional user data
+  void storeAdditionalUserData(String name, String height, String weight) {
+    // Here you can implement your logic to store the additional user data in your database
+    // For example, you can use Firebase Firestore or Realtime Database to store this data
+  }
+}
+
+class NextScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Next Screen'),
+      ),
+      body: Center(
+        child: Text('Welcome to the next screen!'),
       ),
     );
   }
