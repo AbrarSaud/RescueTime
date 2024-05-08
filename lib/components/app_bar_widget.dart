@@ -41,7 +41,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
             icon: Icon(
               icon,
               size: 30,
-              color: Colors.grey[800],
+              color:primary,
             ),
           ),
         ),

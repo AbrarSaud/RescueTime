@@ -8,7 +8,7 @@ import 'package:rescue_time/screens/splash_screen.dart';
 
 List<Emergencies> listEmergencies = [];
 void main() async {
- WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -18,7 +18,7 @@ void main() async {
 
   runApp(const MyApp());
 }
-// test
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override

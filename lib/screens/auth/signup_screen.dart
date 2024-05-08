@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rescue_time/components/button_widget.dart';
@@ -46,7 +45,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 TextFieldWidget(
                   controller: _nameController,
                   hintText: 'Enter Name',
-                  icon: Icon(
+                  icon:const Icon(
                     Icons.person,
                     color: primary,
                   ),
@@ -55,7 +54,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 TextFieldWidget(
                   controller: _emailController,
                   hintText: 'Enter Email',
-                  icon: Icon(
+                  icon:const Icon(
                     Icons.email,
                     color: primary,
                   ),
@@ -64,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 TextFieldWidget(
                   controller: _passwordController,
                   hintText: 'Enter Password',
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.lock,
                     color: primary,
                   ),
@@ -73,7 +72,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 TextFieldWidget(
                   controller: _confirmPasswordController,
                   hintText: 'Confirm Password',
-                  icon: Icon(
+                  icon:const Icon(
                     Icons.lock,
                     color: primary,
                   ),
@@ -82,7 +81,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 TextFieldWidget(
                   controller: _heightController,
                   hintText: 'Enter Height (cm)',
-                  icon: Icon(
+                  icon:const Icon(
                     Icons.height,
                     color: primary,
                   ),
@@ -91,7 +90,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 TextFieldWidget(
                   controller: _weightController,
                   hintText: 'Enter Weight (kg)',
-                  icon: Icon(
+                  icon:const Icon(
                     Icons.line_weight,
                     color: primary,
                   ),
@@ -136,45 +135,48 @@ class _SignupScreenState extends State<SignupScreen> {
     String confirmPassword = _confirmPasswordController.text.toString();
     String height = _heightController.text.toString();
     String weight = _weightController.text.toString();
+
     if (password != confirmPassword) {
-      // Navigator.pop(context);
       displayMessage("Passwords do not match!");
       return;
     }
 
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      FirebaseFirestore.instance
+          .collection("users")
+          .doc(userCredential.user!.email!).set({    'name': name,
+          'email': email,
+          'password': password,
+          'height': height,
+          'weight': weight,});
 
-      storeAdditionalUserData(name, height, weight);
+      addUser(name, email, password, height, weight);
     } on FirebaseAuthException catch (e) {
       print('Signup failed: $e');
 
-      // Navigator.pop(context);
       displayMessage("Signup failed: ${e.code}");
       return;
     }
   }
 
-  // Function to store additional user data
-  void storeAdditionalUserData(String name, String height, String weight) {
-    // Here you can implement your logic to store the additional user data in your database
-    // For example, you can use Firebase Firestore or Realtime Database to store this data
-  }
-}
+  Future<void> addUser(String name, String email, String password,
+      String height, String weight) {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-class NextScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Next Screen'),
-      ),
-      body: Center(
-        child: Text('Welcome to the next screen!'),
-      ),
-    );
+    return users
+        .add({
+          'name': name,
+          'email': email,
+          'password': password,
+          'height': height,
+          'weight': weight,
+        })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
   }
 }
